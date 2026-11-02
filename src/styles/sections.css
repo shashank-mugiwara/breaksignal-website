@@ -1,0 +1,569 @@
+/**
+ * Per-section styles. Only references tokens in global.css and shared
+ * primitives in app.css.
+ */
+
+/* Hero */
+.hero {
+  padding-block: var(--space-section);
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+}
+
+.hero-eyebrow {
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+}
+
+.hero-title {
+  font-size: var(--step-4);
+  line-height: var(--line-1);
+  letter-spacing: -0.03em;
+  font-weight: 750;
+  max-width: 18ch;
+  margin-block-start: var(--space-1);
+}
+
+.hero-lede {
+  font-size: var(--step-1);
+  max-width: 44ch;
+  color: var(--color-ink);
+}
+
+.hero .tag {
+  background: transparent;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-1);
+}
+
+@media (max-width: 40rem) {
+  .hero-title {
+    font-size: var(--step-3);
+  }
+}
+
+/* Capabilities */
+.cap-card {
+  display: grid;
+  gap: 0.625rem;
+  align-content: start;
+}
+
+.cap-code {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--color-accent);
+}
+
+.cap-title {
+  font-size: var(--step-1);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.cap-body {
+  color: var(--color-ink-muted);
+  font-size: var(--step-0);
+}
+
+.proof-list {
+  margin-block-start: var(--space-1);
+}
+
+.proof-list li {
+  padding-inline-start: 1.1em;
+  position: relative;
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+.proof-list li::before {
+  content: "▸";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--color-accent);
+}
+
+/* Residency toggle */
+.residency-toggle,
+.control-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toggle-legend,
+.control-legend {
+  font-size: var(--step--1);
+  font-weight: 650;
+  color: var(--color-ink);
+  margin-block-end: 0.625rem;
+}
+
+.residency-toggle {
+  margin-block-start: var(--space-3);
+}
+
+/* Show the detail block matching the checked radio: first radio shows the
+   first detail, second radio the second detail. */
+.toggle-details {
+  display: grid;
+  margin-block-start: var(--space-2);
+}
+
+.toggle-detail {
+  display: none;
+}
+
+.segmented:has(.segment:first-child input:checked) ~ .toggle-details .toggle-detail:first-child,
+.segmented:has(.segment:nth-child(2) input:checked) ~ .toggle-details .toggle-detail:nth-child(2) {
+  display: grid;
+  gap: 0.375rem;
+}
+
+/* AgentManage pipeline */
+.pipeline {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-2);
+  counter-reset: step;
+}
+
+.pipeline-step {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.pipeline-code {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--color-accent);
+}
+
+.pipeline-title {
+  font-size: var(--step-0);
+  font-weight: 700;
+}
+
+.pipeline-body {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Waitlist */
+.waitlist {
+  margin-block-start: var(--space-3);
+  display: grid;
+  gap: var(--space-2);
+  max-width: 46rem;
+}
+
+.waitlist-title {
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+
+.waitlist-lede {
+  color: var(--color-ink-muted);
+}
+
+.waitlist-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: var(--space-2);
+}
+
+.waitlist-form .field {
+  flex: 1 1 16rem;
+}
+
+.waitlist-note {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+.waitlist-note a,
+.footer-mail a {
+  color: var(--color-ink);
+}
+
+.waitlist-note a:hover,
+.footer-mail a:hover {
+  color: var(--color-accent);
+}
+
+/* Technical proof */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block-end: var(--space-2);
+}
+
+.tab {
+  font: inherit;
+  background: transparent;
+  border: var(--line-strong);
+  border-block-end: 3px solid transparent;
+  color: var(--color-ink-muted);
+  padding: 0.625rem 1rem;
+  cursor: pointer;
+  font-size: var(--step--1);
+  font-weight: 550;
+}
+
+.tab:hover {
+  color: var(--color-ink);
+  border-color: var(--color-ink-muted);
+  border-block-end-color: var(--color-ink-muted);
+}
+
+.tab.is-active {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border-color: var(--color-ink-muted);
+  border-block-end-color: var(--color-accent);
+}
+
+.proof-panel {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.proof-tagline {
+  font-size: var(--step-2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.proof-description {
+  color: var(--color-ink-muted);
+  max-width: 44rem;
+}
+
+.proof-subtitle {
+  font-size: var(--step--1);
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.flow-seq {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.flow-node {
+  border: var(--line-strong);
+  padding: 0.5rem 0.75rem;
+  font-size: var(--step--1);
+  font-weight: 550;
+  background: var(--color-surface-raised);
+}
+
+.flow-arrow {
+  color: var(--color-accent);
+  font-size: var(--step--1);
+}
+
+.code-tabs {
+  display: inline-grid;
+  align-content: start;
+}
+
+.code-tab {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  background: var(--color-surface-raised);
+  color: var(--color-ink-muted);
+  border: var(--line-hair);
+  border-block-end: none;
+  padding: 0.5rem 0.875rem;
+  cursor: pointer;
+}
+
+.code-tab.is-active {
+  background: var(--color-ground);
+  color: var(--color-ink);
+  border-inline-start: 2px solid var(--color-accent);
+}
+
+/* Fleet economics */
+.table-panel {
+  overflow-x: auto;
+}
+
+.fleet-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 48rem;
+  font-size: var(--step--1);
+}
+
+.fleet-table th,
+.fleet-table td {
+  border: var(--line-hair);
+  padding: 0.625rem 0.75rem;
+  text-align: start;
+  vertical-align: top;
+}
+
+.fleet-table thead th {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  font-weight: 650;
+}
+
+.fleet-table .row-frontier th,
+.fleet-table .row-frontier td {
+  background: color-mix(in oklab, var(--color-accent) 6%, var(--color-surface));
+}
+
+.table-footnote {
+  margin-block-start: 0.625rem;
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  max-width: 46rem;
+}
+
+.econ-calculator {
+  margin-block-start: var(--space-2);
+  display: grid;
+  gap: var(--space-2);
+  max-width: 52rem;
+}
+
+.econ-lede {
+  margin-block-start: -0.5rem;
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+.econ-controls {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.econ-control {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 30rem;
+}
+
+/* Estimator */
+.estimator-grid {
+  display: grid;
+  grid-template-columns: minmax(16rem, 22rem) 1fr;
+  gap: var(--space-2);
+  align-items: start;
+}
+
+.estimator-controls {
+  display: grid;
+  gap: var(--space-2);
+  position: sticky;
+  top: var(--space-2);
+}
+
+.estimator-output {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.output-label {
+  font-size: var(--step--1);
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.output-title {
+  font-size: var(--step-1);
+  font-weight: 700;
+  margin-block-start: 0.625rem;
+}
+
+.output-body {
+  color: var(--color-ink-muted);
+  margin-block-start: 0.375rem;
+}
+
+.output-meta {
+  margin-block-start: 0.625rem;
+  font-size: var(--step--1);
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+}
+
+.horizon {
+  margin-block-start: 0.625rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.horizon-weeks {
+  font-size: var(--step-2);
+  font-weight: 750;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+
+.horizon-vs {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+.checklist {
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+  margin-block-start: 0.625rem;
+}
+
+.checklist li {
+  position: relative;
+  padding-inline-start: 1.4em;
+  font-size: var(--step--1);
+  color: var(--color-ink-muted);
+}
+
+.checklist li::before {
+  content: "☑";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--color-accent);
+}
+
+/* Contact */
+.intake-form {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 46rem;
+}
+
+.field-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-2);
+}
+
+.field-checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--color-accent);
+}
+
+.field-head .field-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field-head .form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-status {
+  font-size: var(--step--1);
+  color: var(--color-ink-muted);
+}
+
+/* Footer */
+.site-footer {
+  margin-block-start: var(--space-3);
+  border-top: var(--line-hair);
+  padding-block: var(--space-3);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-3);
+}
+
+.footer-entity {
+  margin-block: var(--space-1) 0;
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+.footer-mail {
+  margin-block-start: 0.375rem;
+  font-size: var(--step--1);
+}
+
+.footer-heading {
+  font-size: var(--step--1);
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin-block-end: 0.625rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: grid;
+  gap: 0.375rem;
+}
+
+.footer-links a {
+  color: var(--color-ink-muted);
+  text-decoration: none;
+  font-size: var(--step--1);
+}
+
+.footer-links a:hover {
+  color: var(--color-ink);
+}
+
+.footer-commitment-body {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  max-width: 30rem;
+}
+
+.footer-fineprint {
+  border-top: var(--line-hair);
+  padding-block-start: var(--space-2);
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Stacked estimator on narrow viewports */
+@media (max-width: 60rem) {
+  .estimator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .estimator-controls {
+    position: static;
+  }
+}

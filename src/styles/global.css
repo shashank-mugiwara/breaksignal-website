@@ -1,0 +1,106 @@
+/**
+ * Design tokens — the single source of truth for the visual system.
+ * Everything downstream (components, sections) references these names only.
+ */
+:root {
+  /* Colour: one ground, one ink, one accent. Flat — no gradients, no glows. */
+  --color-ground: #0f1114;
+  --color-surface: #171a1f; /* one tone step up, for panels */
+  --color-surface-raised: #1f2329;
+  --color-ink: #e9eae6;
+  --color-ink-muted: #9aa0a6; /* secondary text only */
+  --color-accent: #ff4438; /* signal red — actions and one other thing */
+  --color-accent-contrast: #0f1114; /* text on accent */
+
+  /* Type: system stack, honest weight, no webfont cost. */
+  --font-sans:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+
+  /* Fluid type scale — rem + clamp, so the whole page responds to both
+     viewport and user font-size preferences. */
+  --step--1: clamp(0.83rem, 0.78rem + 0.12vw, 0.89rem);
+  --step-0: clamp(1rem, 0.93rem + 0.32vw, 1.19rem);
+  --step-1: clamp(1.2rem, 1.06rem + 0.64vw, 1.65rem);
+  --step-2: clamp(1.44rem, 1.18rem + 1.22vw, 2.3rem);
+  --step-3: clamp(1.73rem, 1.26rem + 2.24vw, 3.26rem);
+  --step-4: clamp(2.07rem, 1.2rem + 4.24vw, 4.61rem);
+  --step-5: clamp(2.49rem, 0.86rem + 7.42vw, 6.5rem); /* display only */
+
+  /* Space in rem — the one grid, used everywhere. */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+  --space-4: 3.5rem;
+  --space-5: 6rem;
+  --space-section: clamp(var(--space-4), 3rem + 6vw, var(--space-5));
+
+  /* Frame: one pair of equal outer margins at every width. */
+  --margin: clamp(1.25rem, 0.7rem + 2.4vw, 2rem);
+  --measure: 42rem; /* 45–75 characters of running text */
+
+  --line-1: 1.05;
+  --line-body: 1.55;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100svh;
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: var(--line-body);
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+:focus-visible {
+  outline: 0.125rem solid var(--color-accent);
+  outline-offset: 0.125rem;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

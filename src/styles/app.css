@@ -1,0 +1,421 @@
+/**
+ * Shell & shared primitives. Everything references the design tokens in
+ * global.css only — no raw colours, no gradients, no rounding.
+ */
+
+:root {
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --line-hair: 1px solid color-mix(in oklab, var(--color-ink-muted) 28%, transparent);
+  --line-strong: 1px solid color-mix(in oklab, var(--color-ink-muted) 45%, transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Layout shell — the one grid and pair of equal outer margins. */
+.frame {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-inline: var(--margin);
+  max-width: 75rem;
+  margin-inline: auto;
+}
+
+main {
+  flex: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  padding: 0;
+  margin: -0.0625rem;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: -100vw;
+  top: var(--space-1);
+  z-index: 10;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--step--1);
+  font-weight: 550;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  left: var(--margin);
+}
+
+/* Header: brand, nav, back office. No bar chrome beyond one hairline. */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  border-bottom: var(--line-hair);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.brand-name {
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.brand-sep {
+  color: var(--color-accent);
+  margin-inline: 0.4em;
+}
+
+/* Live telemetry pulse — the one element allowed to move. */
+.brand-pulse {
+  width: 0.625rem;
+  height: 0.625rem;
+  flex-shrink: 0;
+  background: var(--color-accent);
+  border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 1.25rem;
+}
+
+.nav-link {
+  color: var(--color-ink-muted);
+  text-decoration: none;
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.nav-link:hover {
+  color: var(--color-ink);
+}
+
+.back-office {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.back-office-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--color-ink-muted);
+  text-decoration: none;
+  font-size: var(--step--1);
+  font-family: var(--font-mono);
+}
+
+.back-office-link:hover {
+  color: var(--color-accent);
+}
+
+.back-office-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+/* Sections share one rhythm and one eyebrow. */
+.section {
+  padding-block: var(--space-section);
+  scroll-margin-top: var(--space-2);
+}
+
+.section + .section,
+.hero + .section {
+  border-top: var(--line-hair);
+}
+
+.section-head {
+  max-width: 46rem;
+  margin-block-end: var(--space-3);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 550;
+  letter-spacing: 0.14em;
+}
+
+.section-title {
+  font-size: var(--step-3);
+  line-height: var(--line-1);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.section-lede {
+  color: var(--color-ink-muted);
+  font-size: var(--step-0);
+  max-width: 40rem;
+}
+
+/* Panels & grids — one surface tone step up, one hairline border. */
+.panel {
+  background: var(--color-surface);
+  border: var(--line-hair);
+  padding: var(--space-2);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: var(--space-2);
+}
+
+/* Buttons — square, one accent, one ghost. */
+.button {
+  display: inline-block;
+  inline-size: fit-content;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  text-decoration: none;
+  padding: 0.75rem 1.375rem;
+  border: none;
+  border-radius: 0;
+  font-size: var(--step--1);
+  font-weight: 550;
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.button:hover {
+  transform: translateY(-0.125rem);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border: var(--line-strong);
+}
+
+/* Tags — the guarantee chips. */
+.guarantee-tags,
+.proof-list {
+  list-style: none;
+  display: grid;
+  gap: 0.375rem;
+}
+
+.tag {
+  display: block;
+  width: fit-content;
+  border: var(--line-hair);
+  background: var(--color-surface);
+  padding: 0.5rem 0.875rem;
+  font-size: var(--step--1);
+  font-weight: 550;
+}
+
+/* Shared metric strip (proof + economics). */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--space-2);
+  margin-block: var(--space-2);
+}
+
+.metric {
+  border-block-start: 2px solid var(--color-accent);
+  padding-block-start: 0.625rem;
+}
+
+.metric-label {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+.metric-value {
+  font-size: var(--step-2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.metric-value-accent {
+  color: var(--color-accent);
+}
+
+.metric-sub {
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--color-ink-muted);
+}
+
+/* Form field primitives shared by every form. */
+.field {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.field-head {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.field-label,
+.field-label-inline {
+  font-size: var(--step--1);
+  font-weight: 650;
+}
+
+.field-required {
+  color: var(--color-accent);
+}
+
+.hint {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  max-width: 46rem;
+}
+
+.field-error {
+  color: var(--color-accent);
+  font-size: var(--step--1);
+  font-weight: 550;
+}
+
+.field-control {
+  background: var(--color-surface-raised);
+  border: var(--line-hair);
+  padding: 0.75rem;
+  width: 100%;
+}
+
+.field-control:hover {
+  border-color: color-mix(in oklab, var(--color-ink-muted) 55%, transparent);
+}
+
+/* Modern interaction states: feedback only after real user interaction. */
+.field-control:user-invalid {
+  border-color: var(--color-accent);
+  border-inline-start: 3px solid var(--color-accent);
+}
+
+.field-checkbox:is(:user-valid, :user-invalid) {
+  outline-offset: 0.2rem;
+}
+
+.field-checkbox:is(:user-invalid) {
+  outline: 2px solid var(--color-accent);
+}
+
+/* Segmented radios (residency toggle, estimator). */
+.segmented,
+.control-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.segment {
+  border: var(--line-strong);
+  padding: 0.625rem 0.875rem;
+  cursor: pointer;
+  font-size: var(--step--1);
+  font-weight: 550;
+  transition: border-color 120ms ease;
+}
+
+.segment:hover {
+  border-color: var(--color-ink);
+}
+
+.segment.is-checked,
+.segment:has(input:checked) {
+  border-color: var(--color-accent);
+  color: var(--color-ink);
+  background: color-mix(in oklab, var(--color-accent) 8%, var(--color-surface));
+}
+
+.segment:has(input:focus-visible) {
+  outline: 0.125rem solid var(--color-accent);
+  outline-offset: 0.125rem;
+}
+
+/* Code blocks */
+.codeblock {
+  display: none;
+  background: var(--color-ground);
+  border: var(--line-hair);
+  border-block-start: none;
+  padding: var(--space-2);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  line-height: 1.6;
+  tab-size: 4;
+}
+
+.codeblock.is-visible {
+  display: block;
+}
+
+code {
+  font-family: var(--font-mono);
+}
+
+/* Success panels */
+.success-panel {
+  border-inline-start: 3px solid var(--color-accent);
+  display: grid;
+  gap: 0.5rem;
+  margin-block: var(--space-2);
+}
+
+.success-title {
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+
+.success-body {
+  color: var(--color-ink-muted);
+}
+
+.muted {
+  color: var(--color-ink-muted);
+}
