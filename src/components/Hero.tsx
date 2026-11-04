@@ -1,6 +1,6 @@
 const GUARANTEES = [
   "Zero Model Lock-in (Open & Frontier Models)",
-  "India Cloud Data Residency (DPDP Compliant)",
+  "India Cloud Data Residency",
   "Human-in-the-Loop Verification",
 ] as const;
 
@@ -27,11 +27,11 @@ export default function Hero() {
       </ul>
 
       <div className="hero-actions">
-        <a href="#estimator" className="button">
-          Configure Architecture
+        <a href="#capabilities" className="button">
+          Capabilities
         </a>
         <a href="#contact" className="button button-ghost">
-          Client Intake
+          Contact
         </a>
       </div>
     </section>

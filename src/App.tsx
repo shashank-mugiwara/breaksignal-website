@@ -4,10 +4,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ServicesSection from "./components/ServicesSection";
 import AgentManageSection from "./components/AgentManageSection";
-import ArchitectureProof from "./components/ArchitectureProof";
-import FreeModelsShowcase from "./components/FreeModelsShowcase";
-import ArchitectureEstimator from "./components/ArchitectureEstimator";
-import ContactIntake from "./components/ContactIntake";
+import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -21,10 +18,7 @@ export default function App() {
         <Hero />
         <ServicesSection />
         <AgentManageSection />
-        <ArchitectureProof />
-        <FreeModelsShowcase />
-        <ArchitectureEstimator />
-        <ContactIntake />
+        <ContactSection />
       </main>
       <Footer />
     </div>
