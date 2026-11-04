@@ -46,7 +46,7 @@ Every factual statement, paragraph, list item, table entry, and FAQ response is 
 - **Lead Paragraph**: `BreakSignal builds software with AI agents running inside its own harness, with people reviewing and approving the work before delivery. We build software for small insurance intermediaries, third-party administrators (TPAs), small NBFCs, and fintechs.` [C1, C3, C10]
 - **Action Triggers**:
   - Primary Action (Button): `How we build` (href: `#how-we-build`)
-  - Secondary Action (Button, Ghost): `Contact` (href: `mailto:hello@breaksignal.com`) [C20]
+  - Secondary Action (Button, Ghost): `Contact` (href: `mailto:hello@breaksignal.ai`) [C20]
 - **Design Guardrails**: No performance metrics, no cost-saving multipliers, no AI model names, no generic marketing illustrations.
 
 ---
@@ -195,8 +195,8 @@ Every factual statement, paragraph, list item, table entry, and FAQ response is 
 - **Section Heading (H2)**: `Contact`
 - **Section Lede**: `Start a conversation about your software requirements.` [C7]
 - **Contact Channel**:
-  - Email Address (plain visible text and clickable link): `hello@breaksignal.com` [C20]
-  - Link Target: `mailto:hello@breaksignal.com` [C20]
+  - Email Address (plain visible text and clickable link): `hello@breaksignal.ai` [C20]
+  - Link Target: `mailto:hello@breaksignal.ai` [C20]
 - **First Email Advice**: `When writing, describe the problem you need solved, your financial or operational domain, and where the software should run (in your own cloud infrastructure or hosted).` [C7, C20]
 - **Privacy Notice**: `The site has no analytics, trackers, cookies, or forms.` [C21]
 
@@ -212,7 +212,7 @@ Every factual statement, paragraph, list item, table entry, and FAQ response is 
   - `Engagements` (href: `#engagements`)
   - `FAQ` (href: `#faq`)
   - `Contact` (href: `#contact`) [C20]
-- **Direct Email**: `hello@breaksignal.com` [C20]
+- **Direct Email**: `hello@breaksignal.ai` [C20]
 - **Copyright Statement**: `(c) 2026 BreakSignal.` [C1]
 - **Privacy Affirmation**: `The site has no analytics, trackers, cookies, or forms.` [C21]
 - **Corporate Restraint**: No company registration identifiers, CIN/SRN, or unverified legal disclosures.
@@ -455,7 +455,7 @@ export const SITE_METADATA = {
   description:
     "BreakSignal builds software with AI agents running inside our own harness, reviewed and approved by people. Systems engineering for finance, banking, and insurance.",
   canonical: "https://breaksignal.ai/",
-  email: "hello@breaksignal.com",
+  email: "hello@breaksignal.ai",
   copyrightYear: 2026,
 } as const;
 
@@ -472,7 +472,7 @@ export const HERO_CONTENT = {
   headline: "Software built by AI agents, reviewed by people.",
   lede: "BreakSignal builds software with AI agents running inside its own harness, with people reviewing and approving the work before delivery. We build software for small insurance intermediaries, third-party administrators (TPAs), small NBFCs, and fintechs.",
   primaryAction: { label: "How we build", href: "#how-we-build" },
-  secondaryAction: { label: "Contact", href: "mailto:hello@breaksignal.com" },
+  secondaryAction: { label: "Contact", href: "mailto:hello@breaksignal.ai" },
   claimRefs: ["C1", "C3", "C10", "C20"],
 } as const;
 
@@ -741,7 +741,7 @@ export const FAQ_CONTENT = {
 export const CONTACT_CONTENT = {
   heading: "Contact",
   lede: "Start a conversation about your software requirements.",
-  email: "hello@breaksignal.com",
+  email: "hello@breaksignal.ai",
   advice:
     "When writing, describe the problem you need solved, your financial or operational domain, and where the software should run (in your own cloud infrastructure or hosted).",
   privacyNotice: "The site has no analytics, trackers, cookies, or forms.",
@@ -750,7 +750,7 @@ export const CONTACT_CONTENT = {
 
 export const FOOTER_CONTENT = {
   wordmark: "BreakSignal",
-  email: "hello@breaksignal.com",
+  email: "hello@breaksignal.ai",
   copyright: "(c) 2026 BreakSignal.",
   privacyStatement: "The site has no analytics, trackers, cookies, or forms.",
   claimRefs: ["C1", "C20", "C21"],

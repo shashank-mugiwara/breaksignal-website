@@ -24,7 +24,7 @@ Sources are stored decisions (memory ids, 2026-10-17 to 2026-11-04). "Design" = 
 | C17 | AgentManage is in development and not generally available. (State fact, as of 2026-11-04.) | mem_91f5e80f75bfe0a5, mem_c6fdbd7f8a1e37eb |
 | C18 | AtomicSync is BreakSignal's own product: an iOS health app, App Store name "Atomic Sync: Digital Twin". A digital twin (avatar) shows your daily state and evolves as you do. An Apple Watch companion shows a glance of the avatar. | mem_50949174c07ae84b, mem_5e8db4aa7bee0d86, mem_eed76efbbbcf3990, mem_cdcc9fac95900888 |
 | C19 | AtomicSync is not yet on the App Store (asc-status 2026-11-04: version 1.0.1 waiting for review). Say "release pending". | Scripts/asc-status.py read 2026-11-04 |
-| C20 | Contact: hello@breaksignal.com. | mem_b1289d7a2238776d |
+| C20 | Contact: hello@breaksignal.ai. | mem_b1289d7a2238776d |
 | C21 | The site has no analytics, trackers, cookies or forms. | build fact (verify in code) |
 
 ## Forbidden (never write)
@@ -32,5 +32,5 @@ Sources are stored decisions (memory ids, 2026-10-17 to 2026-11-04). "Design" = 
 - Client names, case studies, metrics, uptime or latency numbers, testimonials, prices, delivery times, team members, addresses, phone numbers.
 - Company registration, "Private Limited", CIN/SRN, compliance or certification claims, "SOC 2", "ISO", "RBI-approved", "DPDP compliant", "zero data leakage", "24x7", "sub-50ms".
 - "Patent", "patented", "patent-pending" (use "proprietary" only if needed).
-- Links to github.com/breaksignal, a VIP portal, ops, blog, or anything that is not an in-page anchor or mailto:hello@breaksignal.com.
+- Links to github.com/breaksignal, a VIP portal, ops, blog, or anything that is not an in-page anchor or mailto:hello@breaksignal.ai.
 - Forms, newsletter boxes, "book a call" widgets, fake success messages.

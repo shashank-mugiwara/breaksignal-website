@@ -32,7 +32,7 @@ Per run rules, operator gates are resolved without pause by selecting either the
 | **Gate 3** | **Typographic System** | **A:** Third-party web fonts (Inter, Geist, Roboto via Google Fonts/CDN).<br>**B:** Native system font stack (`system-ui`, `-apple-system`, "Segoe UI", Arial, sans-serif) with fluid `clamp()` modular scale.<br>**C:** Monospace default across all elements. | **Option B (Fixed by Brief §Design & §Technical)**. Zero network requests, zero layout shift (CLS), pure privacy, instant rendering. Weight and scale drive hierarchy without decorative monospace clichés. |
 | **Gate 4** | **Information Architecture** | **A:** Multi-page site with client-side routing.<br>**B:** Single anchored one-page document with 9 sequential sections.<br>**C:** Tabbed application dashboard. | **Option B (Fixed by Brief §Sections)**. Linear scannability, predictable deep-linking (`#what-we-do`, `#how-we-build`, `#products`, `#engagements`, `#faq`, `#contact`), no router overhead. |
 | **Gate 5** | **Content Boundary & Discarded Claims** | **A:** Expand copy with illustrative case studies, estimated build speeds, and code ownership claims.<br>**B:** Strict subset strictly bounded by C1–C21; explicitly drop unsupported questions (e.g. "what happens to generated code"). | **Option B (Fixed by Brief §Content rule & §FAQ)**. Zero invented facts. If a claim is not in C1–C21, it is omitted completely. |
-| **Gate 6** | **Lead Capture & Contact** | **A:** Multi-field lead form with submission endpoint, validation, and database storage.<br>**B:** Direct `mailto:hello@breaksignal.com` with visible plain-text email, copy button/layout, and guided checklist of what to send.<br>**C:** Embedded third-party calendar / booking widget. | **Option B (Fixed by Brief §Sections and Claims C20, C21)**. No backend form processing, no cookies, no tracking scripts, zero third-party dependencies. |
+| **Gate 6** | **Lead Capture & Contact** | **A:** Multi-field lead form with submission endpoint, validation, and database storage.<br>**B:** Direct `mailto:hello@breaksignal.ai` with visible plain-text email, copy button/layout, and guided checklist of what to send.<br>**C:** Embedded third-party calendar / booking widget. | **Option B (Fixed by Brief §Sections and Claims C20, C21)**. No backend form processing, no cookies, no tracking scripts, zero third-party dependencies. |
 | **Gate 7** | **Technical Stack & Build Rigor** | **A:** Add UI component libraries (Tailwind, Radix, Lucide, Framer Motion).<br>**B:** React 19 + Vite 7 + strict TypeScript + CSS custom properties, zero added dependencies. Typed arrays in `src/content.ts`. | **Option B (Fixed by Brief §Technical constraints)**. Fast builds (`tsc --noEmit && vite build`), zero unused locals, audited content isolation. |
 
 ---
@@ -65,7 +65,7 @@ C16        -> AgentManage delivery: Managed cloud by BreakSignal OR installed on
 C17        -> AgentManage readiness: In development, not generally available (status as of 2026-11-04) -> Products, FAQ
 C18        -> AtomicSync product: iOS health app, "Atomic Sync: Digital Twin", daily avatar evolves with state, Apple Watch companion -> What We Do, Products
 C19        -> AtomicSync readiness: Not yet on App Store; v1.0.1 waiting for review; "release pending" -> Products, FAQ
-C20        -> Contact: hello@breaksignal.com -> Header, Contact, Footer
+C20        -> Contact: hello@breaksignal.ai -> Header, Contact, Footer
 C21        -> Privacy posture: No analytics, trackers, cookies, or forms -> Site-wide, FAQ, Footer
 ```
 
@@ -247,10 +247,10 @@ Every section below specifies its layout, content mapping, and visual structure:
 |    (Who reviews; Where data lives; Hosting; Mobile apps; Cost; AtomicSync status; |
 |     AgentManage status; Online signup; Compliance status)                         |
 +-----------------------------------------------------------------------------------+
-| 8. CONTACT: Plain text hello@breaksignal.com mailto link                          |
+| 8. CONTACT: Plain text hello@breaksignal.ai mailto link                          |
 |    - Copyable address | What to send in first email | No form (C20, C21)          |
 +-----------------------------------------------------------------------------------+
-| 9. FOOTER: Wordmark | Section anchors | hello@breaksignal.com | (c) 2026 BreakSignal|
+| 9. FOOTER: Wordmark | Section anchors | hello@breaksignal.ai | (c) 2026 BreakSignal|
 +-----------------------------------------------------------------------------------+
 ```
 
@@ -272,7 +272,7 @@ Every section below specifies its layout, content mapping, and visual structure:
 - **Copy**: Plain definition of BreakSignal. Software built with AI agents running inside our own harness, verified and approved by people before delivery. Built for small insurance intermediaries, TPAs, small NBFCs, and fintechs needing reliable operational systems (C1, C3, C10).
 - **Actions**:
   - Primary button: `"How we build"` (in-page anchor to `#how-we-build`).
-  - Secondary ghost button: `"Contact us"` (mailto to `hello@breaksignal.com`).
+  - Secondary ghost button: `"Contact us"` (mailto to `hello@breaksignal.ai`).
 - **Forbidden Elements**: No quantitative metrics, no speed claims, no model vendor references, no floating illustration blobs.
 
 #### Section 3: What We Do
@@ -367,7 +367,7 @@ Every section below specifies its layout, content mapping, and visual structure:
 #### Section 8: Contact
 - **Landmark**: `<section id="contact" className="section-contact">`
 - **Heading**: `<h2>Contact</h2>`
-- **Direct Link**: `<a href="mailto:hello@breaksignal.com" className="email-link">hello@breaksignal.com</a>` (C20).
+- **Direct Link**: `<a href="mailto:hello@breaksignal.ai" className="email-link">hello@breaksignal.ai</a>` (C20).
 - **Layout & Guidance**: Clean, scannable panel displaying the plain-text email address. Includes helpful guidance for the initial correspondence:
   - *What to include*: A concise summary of the problem, the specific financial or operational domain, and where the software should ultimately run (your cloud or hosted) (Brief §Sections #8).
 - **Privacy Assurance**: The site operates with zero forms, zero newsletter inputs, zero analytics scripts, and zero cookies (C21).
@@ -377,7 +377,7 @@ Every section below specifies its layout, content mapping, and visual structure:
 - **Elements**:
   - Wordmark: `BreakSignal`
   - Navigation anchors: Links to `#top`, `#what-we-do`, `#how-we-build`, `#products`, `#engagements`, `#faq`, `#contact`.
-  - Contact mailto: `hello@breaksignal.com` (C20).
+  - Contact mailto: `hello@breaksignal.ai` (C20).
   - Copyright line: `(c) 2026 BreakSignal` (No company registration numbers, CIN/SRN, or legal entity claims).
 
 ---

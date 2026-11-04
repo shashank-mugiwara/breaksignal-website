@@ -61,7 +61,7 @@ export const SITE_METADATA = {
   description:
     "BreakSignal builds software with AI agents running inside our own harness, reviewed and approved by people. Systems engineering for finance, banking, and insurance.",
   canonical: "https://breaksignal.ai/",
-  email: "hello@breaksignal.com",
+  email: "hello@breaksignal.ai",
 } as const;
 
 export const NAV_LINKS: readonly NavItem[] = [
@@ -77,7 +77,7 @@ export const HERO_CONTENT = {
   headline: "Software built by AI agents, reviewed by people.",
   lede: "BreakSignal builds software with AI agents running inside its own harness, with people reviewing and approving the work before delivery. The agency works for small insurance intermediaries, third-party administrators (TPAs), small NBFCs and fintechs.",
   primaryAction: { label: "How we build", href: "#how-we-build" },
-  secondaryAction: { label: "Contact", href: "mailto:hello@breaksignal.com" },
+  secondaryAction: { label: "Contact", href: "mailto:hello@breaksignal.ai" },
 } as const;
 
 export const WHAT_WE_DO_CONTENT = {
@@ -330,14 +330,14 @@ export const FAQ_CONTENT = {
 export const CONTACT_CONTENT = {
   heading: "Contact",
   lede: "Start a conversation about your software requirements.",
-  email: "hello@breaksignal.com",
+  email: "hello@breaksignal.ai",
   advice:
     "When writing, describe the problem you need solved, your financial or operational domain, and where the software should run (in your own cloud infrastructure or hosted).",
 } as const;
 
 export const FOOTER_CONTENT = {
   wordmark: "BreakSignal",
-  email: "hello@breaksignal.com",
+  email: "hello@breaksignal.ai",
   privacyStatement:
     "This site has no analytics, trackers or forms. It stores one thing in your browser, your light or dark choice.",
 } as const;
