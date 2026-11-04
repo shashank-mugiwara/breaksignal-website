@@ -275,7 +275,7 @@ export const ENGAGEMENTS_CONTENT = {
     },
   ],
   regulatoryNote:
-    "RBI, IRDAI, CERT-In, and DPDP rules put duties on vendors that host or maintain regulated finance data. These rules shape our default of delivering software into the client's own cloud in an India region rather than operating a shared host. BreakSignal makes no compliance, certification, or audit claims on this page.",
+    "RBI, IRDAI, CERT-In, and DPDP rules put duties on vendors that host or maintain regulated finance data. These rules shape our default of delivering software into the client's own cloud in an India region. BreakSignal makes no compliance, certification, or audit claims on this page.",
   pricingNote: "We do not publish pricing yet.",
 } as const;
 
