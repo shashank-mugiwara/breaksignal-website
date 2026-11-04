@@ -1,40 +1,87 @@
 /**
- * Per-section styles. Only references tokens in global.css and shared
- * primitives in app.css.
+ * src/styles/sections.css
+ * Section layout rhythm, typography hierarchy, responsive tables,
+ * and native details disclosure accordion.
  */
 
-/* Hero */
-.hero {
+/* Section Foundations */
+.section {
   padding-block: var(--space-section);
-  display: grid;
-  gap: var(--space-2);
-  justify-items: start;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
-.hero-eyebrow {
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-block-end: var(--space-4);
+  max-width: var(--measure);
+}
+
+.section-title {
+  font-size: var(--step-3);
+  font-weight: 750;
+  line-height: var(--line-1);
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.section-lede {
+  font-size: var(--step-1);
+  line-height: var(--line-body);
   color: var(--color-ink-muted);
+  max-width: 65ch;
+}
+
+/* ==========================================================================
+   Section 2: Hero
+   ========================================================================== */
+.hero {
+  padding-block-start: clamp(4rem, 3.5rem + 5vw, 7.5rem);
+  padding-block-end: clamp(3.5rem, 3rem + 4vw, 6rem);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 54rem;
+}
+
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-kicker-label {
   font-family: var(--font-mono);
   font-size: var(--step--1);
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-ink-muted);
 }
 
 .hero-title {
   font-size: var(--step-4);
-  line-height: var(--line-1);
-  letter-spacing: -0.03em;
-  font-weight: 750;
-  max-width: 18ch;
-  margin-block-start: var(--space-1);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--color-ink);
+  max-width: 24ch;
 }
 
 .hero-lede {
   font-size: var(--step-1);
-  max-width: 44ch;
-  color: var(--color-ink);
-}
-
-.hero .tag {
-  background: transparent;
+  line-height: var(--line-body);
+  color: var(--color-ink-muted);
+  max-width: 62ch;
 }
 
 .hero-actions {
@@ -44,526 +91,584 @@
   margin-block-start: var(--space-1);
 }
 
-@media (max-width: 40rem) {
-  .hero-title {
-    font-size: var(--step-3);
+/* ==========================================================================
+   Section 3: What We Do
+   Ruled list of numbered rows (title left, text right on desktop; stacked on phone)
+   ========================================================================== */
+.offers-ruled-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.offer-row {
+  display: grid;
+  grid-template-columns: minmax(13rem, 17rem) 1fr;
+  column-gap: var(--space-4);
+  row-gap: var(--space-2);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.offer-row-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.offer-row-num {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+}
+
+.offer-row-title {
+  font-size: var(--step-2);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.offer-row-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 65ch;
+}
+
+.offer-row-summary {
+  font-size: var(--step-0);
+  line-height: var(--line-body);
+  color: var(--color-ink);
+}
+
+.offer-row-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-block-start: 0.25rem;
+}
+
+.offer-row-point {
+  position: relative;
+  padding-inline-start: 1.25rem;
+  font-size: var(--step--1);
+  line-height: 1.5;
+  color: var(--color-ink-muted);
+}
+
+.offer-row-point::before {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  left: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  background-color: var(--color-accent);
+}
+
+@media (max-width: 44rem) {
+  .offer-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-block: var(--space-3);
   }
 }
 
-/* Capabilities */
-.cap-card {
+/* ==========================================================================
+   Section 4: How We Build
+   Two-column ladder with thin vertical rule, no boxes
+   ========================================================================== */
+.pipeline-ladder {
   display: grid;
-  gap: 0.625rem;
-  align-content: start;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-4);
+  row-gap: var(--space-3);
+  position: relative;
+  margin-block-end: var(--space-4);
 }
 
-.cap-code {
+.pipeline-ladder::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: var(--color-border-subtle);
+  transform: translateX(-50%);
+}
+
+.ladder-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-block: var(--space-1);
+}
+
+.ladder-step:nth-child(odd) {
+  padding-inline-end: var(--space-3);
+}
+
+.ladder-step:nth-child(even) {
+  padding-inline-start: var(--space-3);
+}
+
+.ladder-number {
   font-family: var(--font-mono);
   font-size: var(--step--1);
+  font-weight: 700;
   color: var(--color-accent);
+  letter-spacing: 0.08em;
 }
 
-.cap-title {
+.ladder-title {
   font-size: var(--step-1);
   font-weight: 700;
+  color: var(--color-ink);
   letter-spacing: -0.01em;
 }
 
-.cap-body {
-  color: var(--color-ink-muted);
+.ladder-desc {
   font-size: var(--step-0);
-}
-
-.proof-list {
-  margin-block-start: var(--space-1);
-}
-
-.proof-list li {
-  padding-inline-start: 1.1em;
-  position: relative;
+  line-height: var(--line-body);
   color: var(--color-ink-muted);
-  font-size: var(--step--1);
+  max-width: 65ch;
 }
 
-.proof-list li::before {
-  content: "▸";
-  position: absolute;
-  inset-inline-start: 0;
-  color: var(--color-accent);
+@media (max-width: 48rem) {
+  .pipeline-ladder {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-inline-start: var(--space-3);
+  }
+
+  .pipeline-ladder::before {
+    left: 0;
+    transform: none;
+  }
+
+  .ladder-step:nth-child(odd),
+  .ladder-step:nth-child(even) {
+    padding-inline: 0;
+  }
 }
 
-/* Residency toggle */
-.residency-toggle,
-.control-group {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-.toggle-legend,
-.control-legend {
-  font-size: var(--step--1);
-  font-weight: 650;
-  color: var(--color-ink);
-  margin-block-end: 0.625rem;
-}
-
-.residency-toggle {
-  margin-block-start: var(--space-3);
-}
-
-/* Show the detail block matching the checked radio: first radio shows the
-   first detail, second radio the second detail. */
-.toggle-details {
-  display: grid;
-  margin-block-start: var(--space-2);
-}
-
-.toggle-detail {
-  display: none;
-}
-
-.segmented:has(.segment:first-child input:checked) ~ .toggle-details .toggle-detail:first-child,
-.segmented:has(.segment:nth-child(2) input:checked) ~ .toggle-details .toggle-detail:nth-child(2) {
-  display: grid;
-  gap: 0.375rem;
-}
-
-/* AgentManage pipeline */
-.pipeline {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--space-2);
-  counter-reset: step;
-}
-
-.pipeline-step {
-  display: grid;
-  gap: 0.5rem;
-  align-content: start;
-}
-
-.pipeline-code {
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  color: var(--color-accent);
-}
-
-.pipeline-title {
-  font-size: var(--step-0);
-  font-weight: 700;
-}
-
-.pipeline-body {
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-}
-
-/* Waitlist */
-.waitlist {
-  margin-block-start: var(--space-3);
-  display: grid;
-  gap: var(--space-2);
-  max-width: 46rem;
-}
-
-.waitlist-title {
-  font-size: var(--step-2);
-  font-weight: 700;
-}
-
-.waitlist-lede {
-  color: var(--color-ink-muted);
-}
-
-.waitlist-form {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: start;
-  gap: var(--space-2);
-}
-
-.waitlist-form .field {
-  flex: 1 1 16rem;
-}
-
-.waitlist-note {
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-}
-
-.waitlist-note a,
-.footer-mail a {
-  color: var(--color-ink);
-}
-
-.waitlist-note a:hover,
-.footer-mail a:hover {
-  color: var(--color-accent);
-}
-
-/* Technical proof */
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-block-end: var(--space-2);
-}
-
-.tab {
-  font: inherit;
-  background: transparent;
-  border: var(--line-strong);
-  border-block-end: 3px solid transparent;
-  color: var(--color-ink-muted);
-  padding: 0.625rem 1rem;
-  cursor: pointer;
-  font-size: var(--step--1);
-  font-weight: 550;
-}
-
-.tab:hover {
-  color: var(--color-ink);
-  border-color: var(--color-ink-muted);
-  border-block-end-color: var(--color-ink-muted);
-}
-
-.tab.is-active {
+.safeguards-box {
   background: var(--color-surface);
-  color: var(--color-ink);
-  border-color: var(--color-ink-muted);
-  border-block-end-color: var(--color-accent);
-}
-
-.proof-panel {
-  display: grid;
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
   gap: var(--space-2);
 }
 
-.proof-tagline {
-  font-size: var(--step-2);
+.safeguards-title {
+  font-size: var(--step-1);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
 }
 
-.proof-description {
-  color: var(--color-ink-muted);
-  max-width: 44rem;
+.safeguards-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.proof-subtitle {
-  font-size: var(--step--1);
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
+.safeguard-item {
+  position: relative;
+  padding-inline-start: 1.35rem;
+  font-size: var(--step-0);
+  line-height: var(--line-body);
+  color: var(--color-ink);
+  max-width: 65ch;
 }
 
-.flow {
+.safeguard-item::before {
+  content: "";
+  position: absolute;
+  top: 0.65rem;
+  left: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  background-color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Section 5: Products
+   ========================================================================== */
+.products-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.product-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-3) clamp(1rem, 0.5rem + 2vw, var(--space-4));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.product-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.375rem;
+  justify-content: space-between;
+  gap: var(--space-2);
 }
 
-.flow-seq {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
+.product-name {
+  font-size: var(--step-2);
+  font-weight: 750;
+  color: var(--color-ink);
 }
 
-.flow-node {
-  border: var(--line-strong);
-  padding: 0.5rem 0.75rem;
-  font-size: var(--step--1);
-  font-weight: 550;
-  background: var(--color-surface-raised);
+.product-summary {
+  font-size: var(--step-0);
+  line-height: var(--line-body);
+  color: var(--color-ink);
+  max-width: 65ch;
 }
 
-.flow-arrow {
-  color: var(--color-accent);
-  font-size: var(--step--1);
+.facts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  gap: var(--space-2);
+  background: var(--color-ground);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-2);
 }
 
-.code-tabs {
-  display: inline-grid;
-  align-content: start;
+.fact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
 }
 
-.code-tab {
+.fact-label {
   font-family: var(--font-mono);
   font-size: var(--step--1);
-  background: var(--color-surface-raised);
+  font-weight: 600;
   color: var(--color-ink-muted);
-  border: var(--line-hair);
-  border-block-end: none;
-  padding: 0.5rem 0.875rem;
-  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.code-tab.is-active {
-  background: var(--color-ground);
+.fact-value {
+  font-size: var(--step-0);
+  line-height: 1.45;
   color: var(--color-ink);
-  border-inline-start: 2px solid var(--color-accent);
+  max-width: 65ch;
 }
 
-/* Fleet economics */
-.table-panel {
+/* AgentManage 5-Role Table */
+.roles-table-wrapper {
+  margin-block: var(--space-1);
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.fleet-table {
+.roles-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 48rem;
-  font-size: var(--step--1);
+  text-align: left;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-ground);
 }
 
-.fleet-table th,
-.fleet-table td {
-  border: var(--line-hair);
-  padding: 0.625rem 0.75rem;
-  text-align: start;
+.roles-caption {
+  caption-side: top;
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--color-ink-muted);
+  text-align: left;
+  margin-block-end: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.roles-table th,
+.roles-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border-subtle);
   vertical-align: top;
 }
 
-.fleet-table thead th {
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
-  font-weight: 650;
-}
-
-.fleet-table .row-frontier th,
-.fleet-table .row-frontier td {
-  background: color-mix(in oklab, var(--color-accent) 6%, var(--color-surface));
-}
-
-.table-footnote {
-  margin-block-start: 0.625rem;
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-  max-width: 46rem;
-}
-
-.econ-calculator {
-  margin-block-start: var(--space-2);
-  display: grid;
-  gap: var(--space-2);
-  max-width: 52rem;
-}
-
-.econ-lede {
-  margin-block-start: -0.5rem;
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-}
-
-.econ-controls {
-  display: grid;
-  gap: var(--space-2);
-}
-
-.econ-control {
-  display: grid;
-  gap: 0.5rem;
-  max-width: 30rem;
-}
-
-/* Estimator */
-.estimator-grid {
-  display: grid;
-  grid-template-columns: minmax(16rem, 22rem) 1fr;
-  gap: var(--space-2);
-  align-items: start;
-}
-
-.estimator-controls {
-  display: grid;
-  gap: var(--space-2);
-  position: sticky;
-  top: var(--space-2);
-}
-
-.estimator-output {
-  display: grid;
-  gap: var(--space-2);
-}
-
-.output-label {
-  font-size: var(--step--1);
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
-}
-
-.output-title {
-  font-size: var(--step-1);
+.roles-table th {
+  background: var(--color-surface);
+  color: var(--color-ink);
   font-weight: 700;
-  margin-block-start: 0.625rem;
-}
-
-.output-body {
-  color: var(--color-ink-muted);
-  margin-block-start: 0.375rem;
-}
-
-.output-meta {
-  margin-block-start: 0.625rem;
   font-size: var(--step--1);
-  color: var(--color-ink-muted);
-  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
-.horizon {
-  margin-block-start: 0.625rem;
+.role-name-cell {
+  font-weight: 700;
+  color: var(--color-ink);
+  white-space: nowrap;
+  width: 12rem;
+}
+
+.role-desc-cell {
+  color: var(--color-ink-muted);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  max-width: 65ch;
+}
+
+/* 360px Mobile safety for roles table */
+@media (max-width: 40rem) {
+  .roles-table,
+  .roles-table tbody,
+  .roles-table tr,
+  .roles-table th,
+  .roles-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .roles-table thead {
+    display: none;
+  }
+
+  .roles-table tr {
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-block: 0.6rem;
+  }
+
+  .role-name-cell {
+    padding-bottom: 0.25rem;
+    padding-inline: 0.5rem;
+    color: var(--color-accent);
+    width: 100%;
+  }
+
+  .role-desc-cell {
+    padding-top: 0;
+    padding-inline: 0.5rem;
+  }
+}
+
+/* ==========================================================================
+   Section 6: Engagements
+   ========================================================================== */
+.engagements-audience-box {
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-2) var(--space-3);
+  margin-block-end: var(--space-3);
+}
+
+.engagements-audience-text {
+  font-size: var(--step-0);
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: var(--line-body);
+  max-width: 65ch;
+}
+
+.engagements-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-block-end: var(--space-4);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.engagement-step-card {
   display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--space-2);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-block: var(--space-2);
+}
+
+.engagement-step-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--step-1);
+  color: var(--color-accent);
+}
+
+.engagement-step-body {
+  display: flex;
+  flex-direction: column;
   gap: 0.25rem;
 }
 
-.horizon-weeks {
-  font-size: var(--step-2);
-  font-weight: 750;
-  color: var(--color-accent);
-  letter-spacing: -0.02em;
-}
-
-.horizon-vs {
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-}
-
-.checklist {
-  list-style: none;
-  display: grid;
-  gap: 0.4rem;
-  margin-block-start: 0.625rem;
-}
-
-.checklist li {
-  position: relative;
-  padding-inline-start: 1.4em;
-  font-size: var(--step--1);
-  color: var(--color-ink-muted);
-}
-
-.checklist li::before {
-  content: "☑";
-  position: absolute;
-  inset-inline-start: 0;
-  color: var(--color-accent);
-}
-
-/* Contact */
-.intake-form {
-  display: grid;
-  gap: var(--space-2);
-  max-width: 46rem;
-}
-
-.field-pair {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--space-2);
-}
-
-.field-checkbox {
-  width: 1.125rem;
-  height: 1.125rem;
-  accent-color: var(--color-accent);
-}
-
-.field-head .field-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.field-head .form-check {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.form-status {
-  font-size: var(--step--1);
-  color: var(--color-ink-muted);
-}
-
-/* Footer */
-.site-footer {
-  margin-block-start: var(--space-3);
-  border-top: var(--line-hair);
-  padding-block: var(--space-3);
-  display: grid;
-  gap: var(--space-3);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: var(--space-3);
-}
-
-.footer-entity {
-  margin-block: var(--space-1) 0;
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-}
-
-.footer-mail {
-  margin-block-start: 0.375rem;
-  font-size: var(--step--1);
-}
-
-.footer-heading {
-  font-size: var(--step--1);
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
-  margin-block-end: 0.625rem;
-}
-
-.footer-links {
-  list-style: none;
-  display: grid;
-  gap: 0.375rem;
-}
-
-.footer-links a {
-  color: var(--color-ink-muted);
-  text-decoration: none;
-  font-size: var(--step--1);
-}
-
-.footer-links a:hover {
+.engagement-step-title {
+  font-size: var(--step-1);
+  font-weight: 700;
   color: var(--color-ink);
 }
 
-.footer-commitment-body {
+.engagement-step-desc {
+  font-size: var(--step-0);
+  line-height: var(--line-body);
   color: var(--color-ink-muted);
-  font-size: var(--step--1);
-  max-width: 30rem;
+  max-width: 65ch;
 }
 
-.footer-fineprint {
-  border-top: var(--line-hair);
-  padding-block-start: var(--space-2);
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
+.engagements-notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+  gap: var(--space-3);
 }
 
-/* Stacked estimator on narrow viewports */
-@media (max-width: 60rem) {
-  .estimator-grid {
-    grid-template-columns: 1fr;
-  }
+.regulatory-card,
+.pricing-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
-  .estimator-controls {
-    position: static;
-  }
+.note-heading {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted);
+}
+
+.note-body {
+  font-size: var(--step-0);
+  line-height: var(--line-body);
+  color: var(--color-ink);
+  max-width: 65ch;
+}
+
+/* ==========================================================================
+   Section 7: Frequently Asked Questions
+   ========================================================================== */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 65ch;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-block: var(--space-2);
+}
+
+.faq-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--step-1);
+  font-weight: 700;
+  color: var(--color-ink);
+  padding-block: 0.5rem;
+  user-select: none;
+}
+
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-indicator {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  transition: transform 200ms ease;
+  line-height: 1;
+}
+
+.faq-item[open] .faq-indicator {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding-block: 0.5rem var(--space-1);
+  padding-inline-end: var(--space-3);
+  font-size: var(--step-0);
+  line-height: var(--line-body);
+  color: var(--color-ink-muted);
+  max-width: 65ch;
+}
+
+/* ==========================================================================
+   Section 8: Contact
+   ========================================================================== */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 65ch;
+}
+
+.contact-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contact-email-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.contact-email-link {
+  font-family: var(--font-mono);
+  font-size: var(--step-1);
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  word-break: break-all;
+}
+
+.contact-advice-box {
+  background: var(--color-ground);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-2) var(--space-3);
+}
+
+.contact-advice-title {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted);
+  margin-block-end: 0.35rem;
+}
+
+.contact-advice-text {
+  font-size: var(--step-0);
+  line-height: var(--line-body);
+  color: var(--color-ink);
+  max-width: 65ch;
 }

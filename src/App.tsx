@@ -2,8 +2,11 @@ import "./styles/app.css";
 import "./styles/sections.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import ServicesSection from "./components/ServicesSection";
-import AgentManageSection from "./components/AgentManageSection";
+import WhatWeDoSection from "./components/WhatWeDoSection";
+import HowWeBuildSection from "./components/HowWeBuildSection";
+import ProductsSection from "./components/ProductsSection";
+import EngagementsSection from "./components/EngagementsSection";
+import FaqSection from "./components/FaqSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 
@@ -16,8 +19,11 @@ export default function App() {
       <Header />
       <main id="main">
         <Hero />
-        <ServicesSection />
-        <AgentManageSection />
+        <WhatWeDoSection />
+        <HowWeBuildSection />
+        <ProductsSection />
+        <EngagementsSection />
+        <FaqSection />
         <ContactSection />
       </main>
       <Footer />
