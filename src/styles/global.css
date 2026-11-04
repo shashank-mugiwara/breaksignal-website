@@ -1,46 +1,61 @@
 /**
- * Design tokens — the single source of truth for the visual system.
- * Everything downstream (components, sections) references these names only.
+ * src/styles/global.css
+ * Design tokens and global CSS reset.
+ * Strictly system fonts, zero external requests, WCAG AA/AAA compliant.
  */
+
 :root {
-  /* Colour: one ground, one ink, one accent. Flat — no gradients, no glows. */
-  --color-ground: #0f1114;
-  --color-surface: #171a1f; /* one tone step up, for panels */
-  --color-surface-raised: #1f2329;
-  --color-ink: #e9eae6;
-  --color-ink-muted: #9aa0a6; /* secondary text only */
-  --color-accent: #ff4438; /* signal red — actions and one other thing */
-  --color-accent-contrast: #0f1114; /* text on accent */
+  /* Color Tokens - Light Theme (Default) */
+  --color-ground: #ffffff;
+  --color-surface: #f9fafb;
+  --color-surface-raised: #f2f4f7;
+  --color-ink: #111418;
+  --color-ink-muted: #535963;
+  --color-border: #6d7480;
+  --color-border-subtle: #d8dce2;
+  --color-accent: #c5221f;
+  --color-accent-contrast: #ffffff;
+  --color-focus: #c5221f;
 
-  /* Type: system stack, honest weight, no webfont cost. */
-  --font-sans:
-    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    sans-serif;
+  /* Typography: System Stacks Only */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* Fluid type scale — rem + clamp, so the whole page responds to both
-     viewport and user font-size preferences. */
-  --step--1: clamp(0.83rem, 0.78rem + 0.12vw, 0.89rem);
-  --step-0: clamp(1rem, 0.93rem + 0.32vw, 1.19rem);
-  --step-1: clamp(1.2rem, 1.06rem + 0.64vw, 1.65rem);
-  --step-2: clamp(1.44rem, 1.18rem + 1.22vw, 2.3rem);
-  --step-3: clamp(1.73rem, 1.26rem + 2.24vw, 3.26rem);
-  --step-4: clamp(2.07rem, 1.2rem + 4.24vw, 4.61rem);
-  --step-5: clamp(2.49rem, 0.86rem + 7.42vw, 6.5rem); /* display only */
+  /* Fluid Typographic Scale */
+  --step--1: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --step-1: clamp(1.1875rem, 1.1rem + 0.45vw, 1.375rem);
+  --step-2: clamp(1.4rem, 1.25rem + 0.85vw, 1.85rem);
+  --step-3: clamp(1.75rem, 1.45rem + 1.4vw, 2.4rem);
+  --step-4: clamp(2.35rem, 1.85rem + 2.8vw, 3.85rem);
 
-  /* Space in rem — the one grid, used everywhere. */
+  /* Spacing Scale */
   --space-1: 0.5rem;
   --space-2: 1rem;
-  --space-3: 2rem;
-  --space-4: 3.5rem;
-  --space-5: 6rem;
-  --space-section: clamp(var(--space-4), 3rem + 6vw, var(--space-5));
+  --space-3: 1.75rem;
+  --space-4: 3rem;
+  --space-5: 5rem;
+  --space-section: clamp(4rem, 3rem + 4vw, 6.75rem);
 
-  /* Frame: one pair of equal outer margins at every width. */
-  --margin: clamp(1.25rem, 0.7rem + 2.4vw, 2rem);
-  --measure: 42rem; /* 45–75 characters of running text */
+  /* Container & Proportions */
+  --margin: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+  --measure: 65ch;
+  --line-1: 1.15;
+  --line-body: 1.6;
+}
 
-  --line-1: 1.05;
-  --line-body: 1.55;
+:root[data-theme="dark"] {
+  /* Color Tokens - Dark Theme */
+  --color-ground: #0d0f12;
+  --color-surface: #15181d;
+  --color-surface-raised: #1d2128;
+  --color-ink: #eceef0;
+  --color-ink-muted: #949ca6;
+  --color-border: #606873;
+  --color-border-subtle: #272d36;
+  --color-accent: #ff5447;
+  --color-accent-contrast: #0d0f12;
+  --color-focus: #ff5447;
 }
 
 /* Reset */
@@ -55,11 +70,14 @@
 html {
   text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  background-color: var(--color-ground);
+  color: var(--color-ink);
 }
 
 body {
   min-height: 100svh;
-  background: var(--color-ground);
+  background-color: var(--color-ground);
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-size: var(--step-0);
@@ -74,13 +92,12 @@ body {
 }
 
 :focus-visible {
-  outline: 0.125rem solid var(--color-accent);
-  outline-offset: 0.125rem;
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 img,
-svg,
-video {
+svg {
   display: block;
   max-width: 100%;
   height: auto;
@@ -95,6 +112,9 @@ textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {

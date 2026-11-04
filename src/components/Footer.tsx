@@ -1,39 +1,39 @@
-const SECTIONS = [
-  { label: "Capabilities", href: "#capabilities" },
-  { label: "AgentManage", href: "#agentmanage" },
-  { label: "Contact", href: "#contact" },
-] as const;
+import { FOOTER_CONTENT, NAV_LINKS } from "../content";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="site-footer">
-      <div className="footer-grid">
-        <div className="footer-brand">
-          <a href="#top" className="brand">
-            <span className="brand-pulse" aria-hidden="true" />
-            <span className="brand-name">
-              BREAKSIGNAL<span className="brand-sep">{"//"}</span>AI SYSTEMS
-            </span>
+      <div className="footer-top">
+        <div className="footer-brand-block">
+          <a href="#top" className="brand" aria-label="BreakSignal homepage">
+            <span className="brand-dot" aria-hidden="true" />
+            <span>{FOOTER_CONTENT.wordmark}</span>
+          </a>
+          <a
+            href={`mailto:${FOOTER_CONTENT.email}`}
+            className="footer-email-link"
+          >
+            {FOOTER_CONTENT.email}
           </a>
         </div>
 
-        <nav className="footer-col" aria-label="Site sections">
-          <h3 className="footer-heading">Site</h3>
-          <ul className="footer-links">
-            {SECTIONS.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
+        <nav aria-label="Footer navigation" className="footer-nav">
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} className="footer-nav-link">
+              {link.label}
+            </a>
+          ))}
         </nav>
-
-
       </div>
 
-      <p className="footer-fineprint">
-        © {new Date().getFullYear()} BreakSignal. The signal stays on.
-      </p>
+      <div className="footer-bottom">
+        <p className="footer-privacy">{FOOTER_CONTENT.privacyStatement}</p>
+        <p className="footer-copyright">
+          © {currentYear} {FOOTER_CONTENT.wordmark}
+        </p>
+      </div>
     </footer>
   );
 }

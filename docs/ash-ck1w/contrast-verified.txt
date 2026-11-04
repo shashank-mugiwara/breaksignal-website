@@ -1,0 +1,24 @@
+light
+  ink on ground                  #111418 / #ffffff = 18.47  need 4.5  PASS
+  ink on surface                 #111418 / #f9fafb = 17.67  need 4.5  PASS
+  ink-muted on ground            #535963 / #ffffff =  7.05  need 4.5  PASS
+  ink-muted on surface           #535963 / #f9fafb =  6.75  need 4.5  PASS
+  ink-muted on surface-raised    #535963 / #f2f4f7 =  6.40  need 4.5  PASS
+  accent text on ground          #c5221f / #ffffff =  5.80  need 4.5  PASS
+  accent text on surface         #c5221f / #f9fafb =  5.55  need 4.5  PASS
+  accent-contrast on accent      #ffffff / #c5221f =  5.80  need 4.5  PASS
+  border on ground               #6d7480 / #ffffff =  4.71  need 3  PASS
+  border on surface              #6d7480 / #f9fafb =  4.51  need 3  PASS
+  focus on ground                #c5221f / #ffffff =  5.80  need 3  PASS
+dark
+  ink on ground                  #eceef0 / #0d0f12 = 16.50  need 4.5  PASS
+  ink on surface                 #eceef0 / #15181d = 15.30  need 4.5  PASS
+  ink-muted on ground            #949ca6 / #0d0f12 =  6.91  need 4.5  PASS
+  ink-muted on surface           #949ca6 / #15181d =  6.41  need 4.5  PASS
+  ink-muted on surface-raised    #949ca6 / #1d2128 =  5.82  need 4.5  PASS
+  accent text on ground          #ff5447 / #0d0f12 =  6.04  need 4.5  PASS
+  accent text on surface         #ff5447 / #15181d =  5.60  need 4.5  PASS
+  accent-contrast on accent      #0d0f12 / #ff5447 =  6.04  need 4.5  PASS
+  border on ground               #606873 / #0d0f12 =  3.40  need 3  PASS
+  border on surface              #606873 / #15181d =  3.16  need 3  PASS
+  focus on ground                #ff5447 / #0d0f12 =  6.04  need 3  PASS

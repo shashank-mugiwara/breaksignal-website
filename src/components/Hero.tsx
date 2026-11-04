@@ -1,38 +1,24 @@
-const GUARANTEES = [
-  "Zero Model Lock-in (Open & Frontier Models)",
-  "India Cloud Data Residency",
-  "Human-in-the-Loop Verification",
-] as const;
+import { HERO_CONTENT } from "../content";
 
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <p className="hero-eyebrow">TRACK A — BESPOKE SYSTEMS ENGINEERING</p>
-      <h1 id="hero-title" className="hero-title">
-        Bespoke Software Engineering Accelerated by Autonomous Multi-Agent
-        Swarms.
-      </h1>
-      <p className="hero-lede">
-        We engineer, build, and operate production-grade distributed backends,
-        regulated financial workflows, and internal tooling via human-verified
-        AI agent pipelines.
-      </p>
-
-      <ul className="guarantee-tags" aria-label="Key guarantees">
-        {GUARANTEES.map((tag) => (
-          <li key={tag} className="tag">
-            {tag}
-          </li>
-        ))}
-      </ul>
-
-      <div className="hero-actions">
-        <a href="#capabilities" className="button">
-          Capabilities
-        </a>
-        <a href="#contact" className="button button-ghost">
-          Contact
-        </a>
+      <div className="hero-content">
+        <div className="hero-kicker">
+          <span className="hero-kicker-label">BreakSignal</span>
+        </div>
+        <h1 id="hero-title" className="hero-title">
+          {HERO_CONTENT.headline}
+        </h1>
+        <p className="hero-lede">{HERO_CONTENT.lede}</p>
+        <div className="hero-actions">
+          <a href={HERO_CONTENT.primaryAction.href} className="button button-primary">
+            {HERO_CONTENT.primaryAction.label}
+          </a>
+          <a href={HERO_CONTENT.secondaryAction.href} className="button button-ghost">
+            {HERO_CONTENT.secondaryAction.label}
+          </a>
+        </div>
       </div>
     </section>
   );
