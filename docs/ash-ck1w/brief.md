@@ -17,8 +17,8 @@ Use ONLY the claims in `docs/ash-ck1w/claims.md`, including its "Forbidden" list
 6. Engagements (agency): how an engagement works in steps (talk; requirements; build with review; deliver into your cloud by default; optional hosted operation after compliance audit; maintenance via AgentManage). Who it is for (C3), what it does not cover (C6), data location (C4, C5), no published pricing yet (C8), no self-serve checkout (C7). Do not give durations.
 7. FAQ: 7-9 questions, native `<details>` elements, answers only from claims (who reviews the work; where does my data live; do you host; do you build mobile apps; what does it cost; is AtomicSync on the App Store; is AgentManage available; can I sign up online; are you compliant -> answer: we make no compliance claims on this page, it is a conversation for an engagement; what happens to the generated code).
    Careful: "what happens to the generated code" has no claim; omit it. Do not answer questions with anything outside the claims.
-8. Contact: hello@breaksignal.com as a mailto link, with plain text address visible and a copy-friendly layout. One sentence on what to include in the first email (the problem, the domain, where it should run) is allowed as advice. No form.
-9. Footer: wordmark, section links, hello@breaksignal.com, "(c) {year} BreakSignal". No registration text.
+8. Contact: hello@breaksignal.ai as a mailto link, with plain text address visible and a copy-friendly layout. One sentence on what to include in the first email (the problem, the domain, where it should run) is allowed as advice. No form.
+9. Footer: wordmark, section links, hello@breaksignal.ai, "(c) {year} BreakSignal". No registration text.
 
 ## Theme (hard)
 - Light is the default and must be complete and polished by itself. Dark is the second theme.
