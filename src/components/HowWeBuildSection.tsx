@@ -1,4 +1,5 @@
 import { HOW_WE_BUILD_CONTENT } from "../content";
+import SdlcDiagram from "./SdlcDiagram";
 
 export default function HowWeBuildSection() {
   return (
@@ -9,6 +10,8 @@ export default function HowWeBuildSection() {
         </h2>
         <p className="section-lede">{HOW_WE_BUILD_CONTENT.lede}</p>
       </header>
+
+      <SdlcDiagram />
 
       <div className="pipeline-ladder" role="list" aria-label="Build pipeline steps">
         {HOW_WE_BUILD_CONTENT.pipeline.map((step) => (

@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="hero" aria-labelledby="hero-title">
       <div className="hero-content">
         <div className="hero-kicker">
-          <span className="hero-kicker-label">BreakSignal</span>
+          <span className="hero-kicker-label">BreakSignal AI</span>
         </div>
         <h1 id="hero-title" className="hero-title">
           {HERO_CONTENT.headline}

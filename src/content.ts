@@ -56,10 +56,31 @@ export interface FaqItem {
   readonly answer: string;
 }
 
+export interface SdlcStageItem {
+  readonly id: string;
+  readonly stepNumber: number;
+  readonly title: string;
+  readonly shortLabel: string;
+  readonly detail?: string;
+  readonly isGate?: boolean;
+}
+
+export interface SdlcOutcomeItem {
+  readonly id: string;
+  readonly label: string;
+}
+
+export interface SdlcDiagramContent {
+  readonly ariaLabel: string;
+  readonly stages: readonly SdlcStageItem[];
+  readonly deliveryOutcomes: readonly SdlcOutcomeItem[];
+  readonly maintenanceNote: string;
+}
+
 export const SITE_METADATA = {
-  title: "BreakSignal: software built by AI agents, reviewed by people",
+  title: "BreakSignal AI: software built by AI agents, reviewed by people",
   description:
-    "BreakSignal builds software with AI agents running inside our own harness, reviewed and approved by people. Systems engineering for finance, banking, and insurance.",
+    "BreakSignal AI builds software with AI agents running inside our own harness, reviewed and approved by people. Systems engineering for finance, banking, and insurance.",
   canonical: "https://breaksignal.ai/",
   email: "hello@breaksignal.ai",
 } as const;
@@ -75,7 +96,7 @@ export const NAV_LINKS: readonly NavItem[] = [
 
 export const HERO_CONTENT = {
   headline: "Software built by AI agents, reviewed by people.",
-  lede: "BreakSignal builds software with AI agents running inside its own harness, with people reviewing and approving the work before delivery. The agency works for small insurance intermediaries, third-party administrators (TPAs), small NBFCs and fintechs.",
+  lede: "BreakSignal AI builds software with AI agents running inside its own harness, with people reviewing and approving the work before delivery. The agency works for small insurance intermediaries, third-party administrators (TPAs), small NBFCs and fintechs.",
   primaryAction: { label: "How we build", href: "#how-we-build" },
   secondaryAction: { label: "Contact", href: "mailto:hello@breaksignal.ai" },
 } as const;
@@ -98,7 +119,7 @@ export const WHAT_WE_DO_CONTENT = {
       id: "hosted-creation",
       title: "Hosted creation",
       summary:
-        "Users create applications on BreakSignal infrastructure through AgentManage.",
+        "Users create applications on BreakSignal AI infrastructure through AgentManage.",
       points: [
         "AgentManage is the path for hosted creation of new applications. It is in development.",
         "It is also designed to run and maintain existing applications, including ones built elsewhere.",
@@ -153,7 +174,7 @@ export const HOW_WE_BUILD_CONTENT = {
       stepNumber: 6,
       title: "Delivery and hand-over",
       description:
-        "BreakSignal delivers the software into your infrastructure or transitions it to hosted operation.",
+        "BreakSignal AI delivers the software into your infrastructure or transitions it to hosted operation.",
     },
   ],
   safeguardsHeading: "How AgentManage is designed",
@@ -175,7 +196,7 @@ export const PRODUCTS_CONTENT = {
     name: "AtomicSync",
     statusBadge: "Release pending",
     summary:
-      'AtomicSync is BreakSignal\'s own product: an iOS health app with the App Store name "Atomic Sync: Digital Twin". A digital twin (avatar) shows your daily state and evolves as you do. An Apple Watch companion shows a glance of the avatar.',
+      'AtomicSync is BreakSignal AI\'s own product: an iOS health app with the App Store name "Atomic Sync: Digital Twin". A digital twin (avatar) shows your daily state and evolves as you do. An Apple Watch companion shows a glance of the avatar.',
     facts: [
       {
         label: "Core experience",
@@ -227,7 +248,7 @@ export const PRODUCTS_CONTENT = {
       {
         label: "Deployment options",
         value:
-          "Designed to be offered two ways: managed by BreakSignal in its cloud, or installed on-prem in the customer's own AWS account or servers (with infrastructure billed to the customer).",
+          "Designed to be offered two ways: managed by BreakSignal AI in its cloud, or installed on-prem in the customer's own AWS account or servers (with infrastructure billed to the customer).",
       },
       {
         label: "Current availability",
@@ -259,7 +280,7 @@ export const ENGAGEMENTS_CONTENT = {
       stepNumber: 3,
       title: "AI-assisted build with human review",
       description:
-        "BreakSignal builds the software using AI agents inside its own harness, with a person reviewing and approving the work before it is delivered.",
+        "BreakSignal AI builds the software using AI agents inside its own harness, with a person reviewing and approving the work before it is delivered.",
     },
     {
       stepNumber: 4,
@@ -271,11 +292,11 @@ export const ENGAGEMENTS_CONTENT = {
       stepNumber: 5,
       title: "Hand-over or hosted operation",
       description:
-        "BreakSignal hands the software over to the client, or hosts and maintains it after a compliance audit and at the client's request. Ongoing maintenance can be delivered through AgentManage.",
+        "BreakSignal AI hands the software over to the client, or hosts and maintains it after a compliance audit and at the client's request. Ongoing maintenance can be delivered through AgentManage.",
     },
   ],
   regulatoryNote:
-    "RBI, IRDAI, CERT-In, and DPDP rules put duties on vendors that host or maintain regulated finance data. These rules shape our default of delivering software into the client's own cloud in an India region. BreakSignal makes no compliance, certification, or audit claims on this page.",
+    "RBI, IRDAI, CERT-In, and DPDP rules put duties on vendors that host or maintain regulated finance data. These rules shape our default of delivering software into the client's own cloud in an India region. BreakSignal AI makes no compliance, certification, or audit claims on this page.",
   pricingNote: "We do not publish pricing yet.",
 } as const;
 
@@ -293,9 +314,9 @@ export const FAQ_CONTENT = {
         "Default delivery is into the client's own cloud in an India region, with limited vendor access.",
     },
     {
-      question: "Does BreakSignal host client applications?",
+      question: "Does BreakSignal AI host client applications?",
       answer:
-        "BreakSignal-hosted operation is provided only after a compliance audit and at the client's explicit request. Default delivery is into your own cloud.",
+        "BreakSignal AI-hosted operation is provided only after a compliance audit and at the client's explicit request. Default delivery is into your own cloud.",
     },
     {
       question: "Do you build mobile applications for agency clients?",
@@ -320,9 +341,9 @@ export const FAQ_CONTENT = {
         "There is no public self-serve checkout. Every engagement starts with a conversation.",
     },
     {
-      question: "Is BreakSignal compliant or certified under financial regulations?",
+      question: "Is BreakSignal AI compliant or certified under financial regulations?",
       answer:
-        "We make no compliance, certification, or audit claims on this page. RBI, IRDAI, CERT-In, and DPDP rules put duties on vendors that host or maintain regulated finance data, and these rules shape our default of delivering into your own cloud.",
+        "BreakSignal AI makes no compliance, certification, or audit claims on this page. RBI, IRDAI, CERT-In, and DPDP rules put duties on vendors that host or maintain regulated finance data, and these rules shape our default of delivering into your own cloud.",
     },
   ],
 } as const;
@@ -336,8 +357,64 @@ export const CONTACT_CONTENT = {
 } as const;
 
 export const FOOTER_CONTENT = {
-  wordmark: "BreakSignal",
+  wordmark: "BreakSignal AI",
   email: "hello@breaksignal.ai",
   privacyStatement:
     "This site has no analytics, trackers or forms. It stores one thing in your browser, your light or dark choice.",
+} as const;
+
+export const SDLC_DIAGRAM_CONTENT = {
+  ariaLabel:
+    "Build flow: requirements, task decomposition, harness execution, automated checks, human review gate, then delivery into the client's cloud or hosted operation, with maintenance through AgentManage",
+  stages: [
+    {
+      id: "requirements",
+      stepNumber: 1,
+      title: "Requirements definition",
+      shortLabel: "Requirements",
+    },
+    {
+      id: "tasks",
+      stepNumber: 2,
+      title: "Task decomposition",
+      shortLabel: "Tasks",
+    },
+    {
+      id: "harness",
+      stepNumber: 3,
+      title: "Harness execution",
+      shortLabel: "Harness execution",
+      detail: "AI agents build in the harness",
+    },
+    {
+      id: "checks",
+      stepNumber: 4,
+      title: "Automated checks",
+      shortLabel: "Checks",
+    },
+    {
+      id: "gate",
+      stepNumber: 5,
+      title: "Human review",
+      shortLabel: "Human review",
+      isGate: true,
+    },
+    {
+      id: "delivery",
+      stepNumber: 6,
+      title: "Delivery and hand-over",
+      shortLabel: "Delivery",
+    },
+  ],
+  deliveryOutcomes: [
+    {
+      id: "client-cloud",
+      label: "Client's own cloud",
+    },
+    {
+      id: "hosted-operation",
+      label: "Hosted operation after a compliance audit",
+    },
+  ],
+  maintenanceNote: "Maintenance through AgentManage",
 } as const;

@@ -5,9 +5,9 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="header-brand-group">
-        <a href="#top" className="brand" aria-label="BreakSignal homepage">
+        <a href="#top" className="brand" aria-label="BreakSignal AI homepage">
           <span className="brand-dot" aria-hidden="true" />
-          <span>BreakSignal</span>
+          <span>BreakSignal AI</span>
         </a>
       </div>
 
