@@ -182,8 +182,838 @@
 
 /* ==========================================================================
    Section 4: How We Build
-   Two-column ladder with thin vertical rule, no boxes
    ========================================================================== */
+
+/* Accessibility Utility */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* SDLC Flow Diagram */
+.sdlc-diagram {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-block-end: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-3) var(--space-2);
+  box-sizing: border-box;
+  --sdlc-col-1-center: calc((100% - 4rem) / 6);
+  --sdlc-col-2-center: 50%;
+  --sdlc-col-3-center: calc(100% - (100% - 4rem) / 6);
+}
+
+.sdlc-flow {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sdlc-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Stage Card Foundation */
+.sdlc-stage {
+  position: relative;
+  background: var(--color-ground);
+  border: 1px solid var(--color-border-subtle);
+  padding: 0.85rem 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.sdlc-stage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sdlc-stage-num {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.05em;
+  transition: color 200ms ease;
+}
+
+.sdlc-stage-pill {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.02em;
+}
+
+.sdlc-stage-title {
+  font-size: var(--step-0);
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.sdlc-stage-detail {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--color-ink-muted);
+  line-height: 1.35;
+}
+
+/* Human Review Gate Checkpoint */
+.sdlc-stage-gate {
+  border: 2px solid var(--color-border);
+  outline: 2px solid var(--color-border-subtle);
+  outline-offset: 2px;
+  background: var(--color-surface-raised);
+}
+
+.sdlc-gate-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--color-accent);
+}
+
+.sdlc-gate-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+}
+
+.sdlc-gate-diamond {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background-color: var(--color-accent);
+  transform: rotate(45deg);
+}
+
+/* Connectors - Mobile Defaults (Vertical) */
+.sdlc-connector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1.25rem;
+  position: relative;
+  margin-block: 0.25rem;
+}
+
+.sdlc-connector-line {
+  display: block;
+  width: 2px;
+  height: 100%;
+  background-color: var(--color-border-subtle);
+}
+
+.sdlc-transfer-connector {
+  width: 100%;
+  position: relative;
+}
+
+.sdlc-transfer-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1.25rem;
+  position: relative;
+  margin-block: 0.25rem;
+}
+
+.sdlc-transfer-desktop {
+  display: none;
+}
+
+.sdlc-branch-connector {
+  width: 100%;
+  position: relative;
+}
+
+.sdlc-branch-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1.25rem;
+  position: relative;
+  margin-block: 0.25rem;
+}
+
+.sdlc-branch-desktop {
+  display: none;
+}
+
+/* Signal Dot Foundation: Centred & Invisible When Idle */
+.sdlc-signal-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent);
+  opacity: 0;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Outcomes and Maintenance Nodes */
+.sdlc-branches-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sdlc-outcome-node {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  background: var(--color-ground);
+  border: 1px solid var(--color-border-subtle);
+  padding: 0.6rem 0.85rem;
+  font-size: var(--step--1);
+  line-height: 1.4;
+  color: var(--color-ink);
+  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.sdlc-outcome-indicator {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sdlc-outcome-label {
+  font-size: var(--step--1);
+  color: var(--color-ink);
+}
+
+.sdlc-maintenance-node {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  background: var(--color-surface-raised);
+  border: 1px dashed var(--color-border);
+  padding: 0.6rem 0.85rem;
+  font-size: var(--step--1);
+  font-family: var(--font-mono);
+  color: var(--color-ink-muted);
+  line-height: 1.4;
+  transition: border-color 200ms ease, color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.sdlc-maintenance-loop-icon {
+  color: var(--color-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sdlc-maintenance-text {
+  font-size: var(--step--1);
+}
+
+/* ==========================================================================
+   Desktop Responsive Layout (>= 52rem)
+   ========================================================================== */
+@media (min-width: 52rem) {
+  .sdlc-diagram {
+    padding: var(--space-4);
+  }
+
+  .sdlc-row {
+    display: grid;
+    grid-template-columns: 1fr 2rem 1fr 2rem 1fr;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .sdlc-stage {
+    min-height: 6.25rem;
+    justify-content: flex-start;
+  }
+
+  .sdlc-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-block: 0;
+  }
+
+  .sdlc-connector-line {
+    width: 100%;
+    height: 2px;
+  }
+
+  .sdlc-connector .sdlc-signal-dot {
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Wrap Connector (Stage 3 -> Stage 4): Clean 2px Lines */
+  .sdlc-transfer-mobile {
+    display: none;
+  }
+
+  .sdlc-transfer-desktop {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    position: relative;
+    margin-block: 0.35rem;
+  }
+
+  .sdlc-wrap-drop-right {
+    position: absolute;
+    left: var(--sdlc-col-3-center);
+    top: 0;
+    width: 2px;
+    height: 50%;
+    background-color: var(--color-border-subtle);
+    transform: translateX(-50%);
+  }
+
+  .sdlc-wrap-rail {
+    position: absolute;
+    left: var(--sdlc-col-1-center);
+    right: calc(100% - var(--sdlc-col-3-center));
+    top: calc(50% - 1px);
+    height: 2px;
+    background-color: var(--color-border-subtle);
+  }
+
+  .sdlc-wrap-drop-left {
+    position: absolute;
+    left: var(--sdlc-col-1-center);
+    top: 50%;
+    width: 2px;
+    height: 50%;
+    background-color: var(--color-border-subtle);
+    transform: translateX(-50%);
+  }
+
+  .sdlc-dot-3-desk {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-accent);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Branch Connector (Stage 6 -> Three End Nodes): Clean 2px Lines */
+  .sdlc-branch-mobile {
+    display: none;
+  }
+
+  .sdlc-branch-desktop {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    position: relative;
+    margin-block: 0.35rem;
+  }
+
+  .sdlc-branch-stub {
+    position: absolute;
+    left: var(--sdlc-col-3-center);
+    top: 0;
+    width: 2px;
+    height: 50%;
+    background-color: var(--color-border-subtle);
+    transform: translateX(-50%);
+  }
+
+  .sdlc-branch-rail {
+    position: absolute;
+    left: var(--sdlc-col-1-center);
+    right: calc(100% - var(--sdlc-col-3-center));
+    top: calc(50% - 1px);
+    height: 2px;
+    background-color: var(--color-border-subtle);
+  }
+
+  .sdlc-branch-drop-1 {
+    position: absolute;
+    left: var(--sdlc-col-1-center);
+    top: 50%;
+    width: 2px;
+    height: 50%;
+    background-color: var(--color-border-subtle);
+    transform: translateX(-50%);
+  }
+
+  .sdlc-branch-drop-2 {
+    position: absolute;
+    left: var(--sdlc-col-2-center);
+    top: 50%;
+    width: 2px;
+    height: 50%;
+    background-color: var(--color-border-subtle);
+    transform: translateX(-50%);
+  }
+
+  .sdlc-branch-drop-3 {
+    position: absolute;
+    left: var(--sdlc-col-3-center);
+    top: 50%;
+    width: 2px;
+    height: 50%;
+    background-color: var(--color-border-subtle);
+    transform: translateX(-50%);
+  }
+
+  .sdlc-dot-branch-desk {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-accent);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Three End Nodes Spanned by the Rail */
+  .sdlc-branches-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    align-items: stretch;
+  }
+
+  .sdlc-outcome-node {
+    justify-content: flex-start;
+  }
+
+  .sdlc-maintenance-node {
+    justify-content: flex-start;
+    align-items: baseline;
+    text-align: left;
+  }
+}
+
+/* ==========================================================================
+   SDLC Animations: 10s Infinite Master Cycle
+   Loop restart: Stage 1 active glow fades in smoothly from 0% (no pop)
+   Stage 1:   0% (idle) -> 2% - 9% (active) -> 12% (idle)
+   Dot 1:     9% - 13% (~0.4s)
+   Stage 2:  13% - 20% (~0.7s)
+   Dot 2:    20% - 24% (~0.4s)
+   Stage 3:  24% - 31% (~0.7s)
+   Dot 3:    32% - 37.5% (~0.55s wrap)
+   Stage 4:  38% - 45% (~0.7s)
+   Dot 4:    45% - 49% (~0.4s)
+   Stage 5:  50% - 68% (~1.8s - GATE pauses longer, ~2s with ease)
+   Dot 5:    68% - 72% (~0.4s)
+   Stage 6:  72% - 79% (~0.7s)
+   Dot Br:   79% - 83% (~0.4s fan-out)
+   Outcomes: 83% - 89% (~0.6s)
+   Maint:    91% - 96% (~0.5s - last step after delivery outcomes)
+   Reset:    98% - 100% (idle, seamless loop into 0%)
+   ========================================================================== */
+
+/* Stage 1: Smooth Fade-in from 0% */
+@keyframes sdlc-anim-stage-1 {
+  0% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+  2%, 9% {
+    border-color: var(--color-accent);
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 0 0 1px var(--color-accent), 0 0 10px var(--color-accent);
+  }
+  12%, 100% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+}
+
+/* Stage 2 */
+@keyframes sdlc-anim-stage-2 {
+  0%, 11% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+  13%, 20% {
+    border-color: var(--color-accent);
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 0 0 1px var(--color-accent), 0 0 10px var(--color-accent);
+  }
+  23%, 100% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+}
+
+/* Stage 3 */
+@keyframes sdlc-anim-stage-3 {
+  0%, 22% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+  24%, 31% {
+    border-color: var(--color-accent);
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 0 0 1px var(--color-accent), 0 0 10px var(--color-accent);
+  }
+  34%, 100% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+}
+
+/* Stage 4 */
+@keyframes sdlc-anim-stage-4 {
+  0%, 36% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+  38%, 45% {
+    border-color: var(--color-accent);
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 0 0 1px var(--color-accent), 0 0 10px var(--color-accent);
+  }
+  48%, 100% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+}
+
+/* Stage 5: GATE (Pauses noticeably longer, ~2s) */
+@keyframes sdlc-anim-stage-5 {
+  0%, 48% {
+    border-color: var(--color-border);
+    outline-color: var(--color-border-subtle);
+    background-color: var(--color-surface-raised);
+    box-shadow: none;
+  }
+  50%, 68% {
+    border-color: var(--color-accent);
+    outline-color: var(--color-accent);
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 0 0 2px var(--color-accent), 0 0 14px var(--color-accent);
+  }
+  71%, 100% {
+    border-color: var(--color-border);
+    outline-color: var(--color-border-subtle);
+    background-color: var(--color-surface-raised);
+    box-shadow: none;
+  }
+}
+
+/* Stage 6: Delivery */
+@keyframes sdlc-anim-stage-6 {
+  0%, 70% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+  72%, 79% {
+    border-color: var(--color-accent);
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 0 0 1px var(--color-accent), 0 0 10px var(--color-accent);
+  }
+  82%, 100% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+}
+
+/* Outcomes (Client Cloud & Hosted Operation) */
+@keyframes sdlc-anim-outcomes {
+  0%, 81% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+  83%, 89% {
+    border-color: var(--color-accent);
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 0 0 1px var(--color-accent), 0 0 8px var(--color-accent);
+  }
+  91%, 100% {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+}
+
+/* Maintenance: Lights up as the last step after delivery outcomes */
+@keyframes sdlc-anim-maintenance {
+  0%, 89% {
+    border-color: var(--color-border);
+    color: var(--color-ink-muted);
+    background-color: var(--color-surface-raised);
+    box-shadow: none;
+  }
+  91%, 96% {
+    border-color: var(--color-accent);
+    color: var(--color-ink);
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 0 0 1px var(--color-accent), 0 0 10px var(--color-accent);
+  }
+  98%, 100% {
+    border-color: var(--color-border);
+    color: var(--color-ink-muted);
+    background-color: var(--color-surface-raised);
+    box-shadow: none;
+  }
+}
+
+/* Assign Stage Animations */
+.sdlc-stage-1 { animation: sdlc-anim-stage-1 10s infinite ease-in-out; }
+.sdlc-stage-2 { animation: sdlc-anim-stage-2 10s infinite ease-in-out; }
+.sdlc-stage-3 { animation: sdlc-anim-stage-3 10s infinite ease-in-out; }
+.sdlc-stage-4 { animation: sdlc-anim-stage-4 10s infinite ease-in-out; }
+.sdlc-stage-5 { animation: sdlc-anim-stage-5 10s infinite ease-in-out; }
+.sdlc-stage-6 { animation: sdlc-anim-stage-6 10s infinite ease-in-out; }
+.sdlc-outcome-node { animation: sdlc-anim-outcomes 10s infinite ease-in-out; }
+.sdlc-maintenance-node { animation: sdlc-anim-maintenance 10s infinite ease-in-out; }
+
+/* Signal Dot Animations (Mobile: Vertical) */
+@keyframes sdlc-anim-dot-v-1 {
+  0%, 8% { opacity: 0; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  9% { opacity: 1; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  13% { opacity: 1; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+  14%, 100% { opacity: 0; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+}
+
+@keyframes sdlc-anim-dot-v-2 {
+  0%, 19% { opacity: 0; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  20% { opacity: 1; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  24% { opacity: 1; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+  25%, 100% { opacity: 0; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+}
+
+@keyframes sdlc-anim-dot-v-3 {
+  0%, 31% { opacity: 0; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  32% { opacity: 1; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  37% { opacity: 1; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+  38%, 100% { opacity: 0; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+}
+
+@keyframes sdlc-anim-dot-v-4 {
+  0%, 44% { opacity: 0; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  45% { opacity: 1; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  49% { opacity: 1; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+  50%, 100% { opacity: 0; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+}
+
+@keyframes sdlc-anim-dot-v-5 {
+  0%, 67% { opacity: 0; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  68% { opacity: 1; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  72% { opacity: 1; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+  73%, 100% { opacity: 0; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+}
+
+@keyframes sdlc-anim-dot-v-branch {
+  0%, 78% { opacity: 0; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  79% { opacity: 1; top: 0; left: 50%; transform: translate(-50%, -50%); }
+  83% { opacity: 1; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+  84%, 100% { opacity: 0; top: 100%; left: 50%; transform: translate(-50%, -50%); }
+}
+
+.sdlc-dot-1 { animation: sdlc-anim-dot-v-1 10s infinite linear; }
+.sdlc-dot-2 { animation: sdlc-anim-dot-v-2 10s infinite linear; }
+.sdlc-dot-3-mob { animation: sdlc-anim-dot-v-3 10s infinite linear; }
+.sdlc-dot-4 { animation: sdlc-anim-dot-v-4 10s infinite linear; }
+.sdlc-dot-5 { animation: sdlc-anim-dot-v-5 10s infinite linear; }
+.sdlc-dot-branch-mob { animation: sdlc-anim-dot-v-branch 10s infinite linear; }
+
+/* Signal Dot Animations (Desktop: Horizontal & Multi-axis >= 52rem) */
+@media (min-width: 52rem) {
+  @keyframes sdlc-anim-dot-h-1 {
+    0%, 8% { opacity: 0; left: 0; top: 50%; transform: translate(-50%, -50%); }
+    9% { opacity: 1; left: 0; top: 50%; transform: translate(-50%, -50%); }
+    13% { opacity: 1; left: 100%; top: 50%; transform: translate(-50%, -50%); }
+    14%, 100% { opacity: 0; left: 100%; top: 50%; transform: translate(-50%, -50%); }
+  }
+
+  @keyframes sdlc-anim-dot-h-2 {
+    0%, 19% { opacity: 0; left: 0; top: 50%; transform: translate(-50%, -50%); }
+    20% { opacity: 1; left: 0; top: 50%; transform: translate(-50%, -50%); }
+    24% { opacity: 1; left: 100%; top: 50%; transform: translate(-50%, -50%); }
+    25%, 100% { opacity: 0; left: 100%; top: 50%; transform: translate(-50%, -50%); }
+  }
+
+  @keyframes sdlc-anim-dot-desk-3 {
+    0%, 31% {
+      opacity: 0;
+      left: var(--sdlc-col-3-center);
+      top: 0;
+      transform: translate(-50%, -50%);
+    }
+    32% {
+      opacity: 1;
+      left: var(--sdlc-col-3-center);
+      top: 0;
+      transform: translate(-50%, -50%);
+    }
+    33.5% {
+      opacity: 1;
+      left: var(--sdlc-col-3-center);
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    36% {
+      opacity: 1;
+      left: var(--sdlc-col-1-center);
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    37.5% {
+      opacity: 1;
+      left: var(--sdlc-col-1-center);
+      top: 100%;
+      transform: translate(-50%, -50%);
+    }
+    38%, 100% {
+      opacity: 0;
+      left: var(--sdlc-col-1-center);
+      top: 100%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @keyframes sdlc-anim-dot-h-4 {
+    0%, 44% { opacity: 0; left: 0; top: 50%; transform: translate(-50%, -50%); }
+    45% { opacity: 1; left: 0; top: 50%; transform: translate(-50%, -50%); }
+    49% { opacity: 1; left: 100%; top: 50%; transform: translate(-50%, -50%); }
+    50%, 100% { opacity: 0; left: 100%; top: 50%; transform: translate(-50%, -50%); }
+  }
+
+  @keyframes sdlc-anim-dot-h-5 {
+    0%, 67% { opacity: 0; left: 0; top: 50%; transform: translate(-50%, -50%); }
+    68% { opacity: 1; left: 0; top: 50%; transform: translate(-50%, -50%); }
+    72% { opacity: 1; left: 100%; top: 50%; transform: translate(-50%, -50%); }
+    73%, 100% { opacity: 0; left: 100%; top: 50%; transform: translate(-50%, -50%); }
+  }
+
+  @keyframes sdlc-anim-dot-desk-branch {
+    0%, 78% {
+      opacity: 0;
+      left: var(--sdlc-col-3-center);
+      top: 0;
+      transform: translate(-50%, -50%);
+    }
+    79% {
+      opacity: 1;
+      left: var(--sdlc-col-3-center);
+      top: 0;
+      transform: translate(-50%, -50%);
+    }
+    80.5% {
+      opacity: 1;
+      left: var(--sdlc-col-3-center);
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    82% {
+      opacity: 1;
+      left: var(--sdlc-col-1-center);
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    83% {
+      opacity: 1;
+      left: var(--sdlc-col-1-center);
+      top: 100%;
+      transform: translate(-50%, -50%);
+    }
+    84%, 100% {
+      opacity: 0;
+      left: var(--sdlc-col-1-center);
+      top: 100%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .sdlc-dot-1 { animation: sdlc-anim-dot-h-1 10s infinite linear; }
+  .sdlc-dot-2 { animation: sdlc-anim-dot-h-2 10s infinite linear; }
+  .sdlc-dot-3-desk { animation: sdlc-anim-dot-desk-3 10s infinite linear; }
+  .sdlc-dot-4 { animation: sdlc-anim-dot-h-4 10s infinite linear; }
+  .sdlc-dot-5 { animation: sdlc-anim-dot-h-5 10s infinite linear; }
+  .sdlc-dot-branch-desk { animation: sdlc-anim-dot-desk-branch 10s infinite linear; }
+}
+
+/* ==========================================================================
+   Prefers Reduced Motion: Static Display with Gate Emphasised
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .sdlc-diagram *,
+  .sdlc-diagram *::before,
+  .sdlc-diagram *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .sdlc-stage {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-ground);
+    box-shadow: none;
+  }
+
+  .sdlc-stage.sdlc-stage-gate {
+    border-color: var(--color-accent);
+    outline-color: var(--color-accent);
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 0 0 1px var(--color-accent);
+  }
+
+  .sdlc-signal-dot {
+    display: none !important;
+  }
+
+  .sdlc-outcome-node,
+  .sdlc-maintenance-node {
+    border-color: var(--color-border-subtle);
+    box-shadow: none;
+  }
+}
+
 .pipeline-ladder {
   display: grid;
   grid-template-columns: 1fr 1fr;

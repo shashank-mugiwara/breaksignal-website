@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-top">
         <div className="footer-brand-block">
-          <a href="#top" className="brand" aria-label="BreakSignal homepage">
+          <a href="#top" className="brand" aria-label="BreakSignal AI homepage">
             <span className="brand-dot" aria-hidden="true" />
             <span>{FOOTER_CONTENT.wordmark}</span>
           </a>
